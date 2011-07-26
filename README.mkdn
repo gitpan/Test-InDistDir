@@ -1,37 +1,12 @@
-use strict;
-use warnings;
-package Test::InDistDir;
-
-our $VERSION = '1.112071'; # VERSION
-# ABSTRACT: test environment setup for development with IDE
-
-
-use lib;
-use File::Spec;
-
-sub import {
-    my $script = ( File::Spec->splitpath( $0 ) )[-1];
-
-    chdir ".." if !-f "t/$script";
-    lib->import( 'lib' ) if !grep { /\bblib\b/ } @INC;
-
-    return;
-}
-
-1;
-
-__END__
-=pod
-
-=head1 NAME
+# NAME
 
 Test::InDistDir - test environment setup for development with IDE
 
-=head1 VERSION
+# VERSION
 
 version 1.112071
 
-=head1 SYNOPSIS
+# SYNOPSIS
 
     use Test::More;
     use Test::InDistDir;
@@ -39,7 +14,7 @@ version 1.112071
     # when this is run from inside t/ with a default @INC, it will now be in the
     # dist dir and include ./lib in @INC
 
-=head1 DESCRIPTION
+# DESCRIPTION
 
 This module helps run test scripts in IDEs like Komodo.
 
@@ -58,36 +33,31 @@ actually run inside the t/ directory.
 At the same time it will still function correctly when called by
 EUMM/prove/etc., since it does not change the environment in those cases.
 
-=for :stopwords cpan testmatrix url annocpan anno bugtracker rt cpants kwalitee diff irc mailto metadata placeholders
+# SUPPORT
 
-=head1 SUPPORT
+## Bugs / Feature Requests
 
-=head2 Bugs / Feature Requests
-
-Please report any bugs or feature requests by email to C<bug-test-indistdir at rt.cpan.org>, or through
-the web interface at L<http://rt.cpan.org/Public/Dist/Display.html?Name=Test-InDistDir>. You will be automatically notified of any
+Please report any bugs or feature requests by email to `bug-test-indistdir at rt.cpan.org`, or through
+the web interface at [http://rt.cpan.org/Public/Dist/Display.html?Name=Test-InDistDir](http://rt.cpan.org/Public/Dist/Display.html?Name=Test-InDistDir). You will be automatically notified of any
 progress on the request by the system.
 
-=head2 Source Code
+## Source Code
 
 This is open source software.  The code repository is available for
 public review and contribution under the terms of the license.
 
-L<https://github.com/wchristian/Test-InDistDir>
+[https://github.com/wchristian/Test-InDistDir](https://github.com/wchristian/Test-InDistDir)
 
   git clone https://github.com/wchristian/Test-InDistDir
 
-=head1 AUTHOR
+# AUTHOR
 
 Christian Walde <walde.christian@googlemail.com>
 
-=head1 COPYRIGHT AND LICENSE
+# COPYRIGHT AND LICENSE
 
 This software is Copyright (c) 2011 by Christian Walde.
 
 This is free software, licensed under:
 
   DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE, Version 2, December 2004
-
-=cut
-
